@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maximumValue(vector<string>& strs) {
+        int mx=0;
+        for(auto s:strs){
+            int c=0,x=0;
+            for(auto it:s){
+                if(it>='a' && it<='z'){
+                    c=1;
+                    break;
+                }
+                else{
+                    x=x*10+(it-'0');
+                }
+            }
+            if(c){
+                int len=s.size();
+                mx=max(mx,len);
+            }
+            else{
+                mx=max(mx,x);
+            }
+        }
+        return mx;
+    }
+};
