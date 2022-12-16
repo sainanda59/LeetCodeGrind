@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        unordered_map<int,vector<int>>ump;
+        for(int i=0;i<nums.size();i++)
+            ump[nums[i]].push_back(i);
+        int mx=INT_MIN,mnl=0;
+        for(auto it:ump){
+            int x = it.second.size(), y = it.second[it.second.size()-1]-it.second[0]+1;
+        if(x>mx || (x==mx && y<mnl))
+            mx=x,mnl=y;
+        }
+        return mnl;
+    }
+};
