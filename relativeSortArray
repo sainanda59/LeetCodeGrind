@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        map<int,int>ump;
+        for(auto it:arr1)ump[it]++;
+        vector<int>ans;
+        for(auto it:arr2){
+            int x = ump[it];
+            ump[it]=0;
+            while(x--){
+                ans.push_back(it);
+            }
+        }
+        for(auto it:ump){
+            int x = it.second;
+            it.second=0;
+            while(x--)
+            ans.push_back(it.first);
+        }
+        return ans;
+    }
+};
