@@ -1,0 +1,30 @@
+//optimised code
+class Solution {
+public:
+    void duplicateZeros(vector<int>& arr) {
+        int n = arr.size(),j=n;
+        for(auto it:arr)
+        if(it==0)j++;
+        for(int i=n-1;i>=0;i--){
+            if(--j<n)
+            arr[j]=arr[i];
+            if(arr[i]==0 && --j<n)
+            arr[j]=0;
+        }
+    }
+};
+
+// brute
+class Solution {
+public:
+    void duplicateZeros(vector<int>& arr) {
+        int n=arr.size();
+        for(int i=0;i<n;i++){
+            if(arr[i]==0){
+                for(int j=n-1;j>i;j--)
+                arr[j]=arr[j-1];
+                i++;
+            }
+        }
+    }
+};
