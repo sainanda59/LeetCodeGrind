@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int minPartitions(string n) {
+        //not-mine
+        int mx=0;
+        for(auto s:n){
+        mx=max(mx,s-'0');
+        }
+        return mx;
+    }
+};
