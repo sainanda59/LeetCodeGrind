@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> findArray(vector<int>& pref) {
+        vector<int>ans;
+        int x=0,y=0,n=pref.size();
+        for(int i=0;i<n;i++){
+            x = x xor pref[i];
+            ans.push_back(x);
+            y = y xor x;
+            x = y;
+        }
+        return ans;
+    }
+};
