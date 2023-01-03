@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int sumEvenGrandparent(TreeNode* root) {
+        if(root==NULL)return 0;
+        int x=0;
+        if((root->val)%2==0){
+            if(root->left && root->left->left)x+=root->left->left->val;
+            if(root->left && root->left->right)x+=root->left->right->val;
+            if(root->right && root->right->left)x+=root->right->left->val;
+            if(root->right && root->right->right)x+=root->right->right->val;
+        }
+        x+=sumEvenGrandparent(root->left)+sumEvenGrandparent(root->right);
+        return x;
+    }
+};
