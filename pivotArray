@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> pivotArray(vector<int>& nums, int pivot) {
+        vector<int>ans(nums.size());
+        int sm=0,eq=0;
+        for(auto it:nums){
+            if(it<pivot)sm++;
+            if(it==pivot)eq++;
+        }
+        int lg=sm+eq;
+        eq=sm,sm=0;
+        for(auto it:nums){
+            if(it<pivot){
+                ans[sm]=it;
+                sm++;
+            }
+            if(it==pivot){
+                ans[eq]=pivot;
+                eq++;
+            }
+            if(it>pivot){
+                ans[lg]=it;
+                lg++;
+            }
+        }
+        return ans;
+    }
+};
