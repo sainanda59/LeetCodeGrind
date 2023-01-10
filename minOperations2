@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int minOperations(int n) {
+    int f = 1, l = 2*(n-1)+1, eq = (f+l)/2;
+    int m = 2*((n/2)-1)+1;
+    int x = n/2;
+    int fsum = (x*(f+m))/2;
+    int ans = x*eq - fsum;
+    // cout<<l<<" "<<eq<<" "<<m<<" "<<x<<" "<<fsum<<" "<<ans<<endl;
+    return ans;
+    }
+};
