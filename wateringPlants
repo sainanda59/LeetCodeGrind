@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int wateringPlants(vector<int>& plants, int capacity) {
+    int d=0,ans=0,cap=capacity;
+    for(auto it:plants){
+    d++;
+    ans++;
+    if(cap<it){
+        cap=capacity;
+        ans+=(d*2-2);
+    }
+    cap-=it;
+    }
+    return ans;
+    }
+};
