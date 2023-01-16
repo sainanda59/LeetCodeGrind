@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
+        vector<string>ans;
+        for(auto st:words){
+            unordered_map<int,int>ump,mp;
+            int i;
+           for(i=0;i<st.size();i++){
+               if(ump.find(st[i])!=ump.end() && ump[st[i]]==pattern[i])continue;
+               if(ump.find(st[i])==ump.end() && mp.find(pattern[i])==mp.end()){
+                   ump[st[i]]=pattern[i];
+                   mp[pattern[i]]=st[i];
+               }
+               else break;
+               
+           }
+           if(i==st.size())ans.push_back(st);
+        }
+        return ans;
+    }
+};
