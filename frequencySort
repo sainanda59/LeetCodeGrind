@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string frequencySort(string s) {
+        unordered_map<char,int>ump;
+        for(auto it:s)ump[it]++;
+        vector<string>buk(s.size()+1,"");
+        for(auto [c,f]:ump){
+        buk[f].append(f,c);
+        }
+        string ans="";
+        for(int i=s.size();i>=1;i--){
+        ans+=buk[i];
+        }
+        return ans;
+        
+    }
+};
