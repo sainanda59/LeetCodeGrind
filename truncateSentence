@@ -1,0 +1,14 @@
+class Solution {
+public:
+    string truncateSentence(string s, int k) {
+        int i=0;
+        int j=0;
+        while(j<k&&i<s.size()){
+           if(s[i]==32)j++;
+           i++;
+        }
+        if(j<k)return s;
+        else
+        return s.substr(0,i-1);
+    }
+};
