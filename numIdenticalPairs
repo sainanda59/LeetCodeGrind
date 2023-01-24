@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        unordered_map<int,int>ump;
+        for(auto it:nums)ump[it]++;
+        int ans=0;
+        for(auto [a,b]:ump){
+            ans+=(b*(b-1))/2;
+        }
+        return ans;
+    }
+};
