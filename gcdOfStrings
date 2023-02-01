@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int hcf(int n,int m){
+        if(n>m)return hcf(m,n);
+        if(n==0)return m;
+        return hcf(m%n,n);
+
+    }
+    bool equal(string a, string b, int n){
+        string x="";
+        for(int i=0;i<n;i++)x+=b;
+        return a==x;
+    }
+
+    string gcdOfStrings(string s, string t) {
+        int n=s.size(),m=t.size();
+        int hcff=hcf(n,m);
+        cout<<hcff<<endl;
+        string x = s.substr(0,hcff);
+        if(equal(s,x,n/hcff) && equal(t,x,m/hcff))return x;
+        else return "";
+    }
+};
