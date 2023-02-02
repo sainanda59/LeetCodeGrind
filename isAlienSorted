@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isAlienSorted(vector<string>& words, string order) {
+        unordered_map<char,int>ump;
+        int i=1;
+        for(auto it:order){
+            ump[it]=i++;
+        }
+        for(int i=1;i<words.size();i++){
+            int mn=words[i-1].size(),j;
+            for(j=0;j<mn;j++){
+                if(ump[words[i][j]]<ump[words[i-1][j]])return false;
+                if(ump[words[i][j]]>ump[words[i-1][j]])break;
+            }
+            if(j==mn && words[i].size()<mn)return false;
+        }
+        return true;
+
+    }
+};
