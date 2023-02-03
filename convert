@@ -1,0 +1,18 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows==1)return s;
+        int k=0,dir=1;
+        vector<string>rowWise(numRows,"");
+        for(auto it:s){
+        rowWise[k]+=it;
+        if((k==numRows-1 && dir==1) || (k==0 && dir==-1)){
+        dir*=-1;
+        }
+        k+=dir;
+    }
+    string ans="";
+    for(auto it:rowWise)ans+=it;
+    return ans;
+    }
+};
