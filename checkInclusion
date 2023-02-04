@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool checkPerm(vector<int>x, vector<int>y){
+        for(int i=0;i<26;i++){
+            if(x[i]!=y[i])return false;
+        }
+        return true;
+    }
+    bool checkInclusion(string s1, string s2) {
+        if(s2.size()<s1.size())return false;
+        vector<int>x(26,0),y(26,0);
+        for(auto it:s1)x[it-'a']++;
+        int s=0,c=0;
+        while(c<s2.size()){
+            y[s2[c]-'a']++;
+            if(c-s+1==s1.size()){
+                if(checkPerm(x,y))return true;
+            }
+            if(c-s+1<s1.size())c++;
+            else{
+                y[s2[s]-'a']--;
+                s++;
+                c++;
+            }
+        }
+        return false;
+    }
+};
