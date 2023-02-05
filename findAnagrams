@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool checkAna(vector<int>x, vector<int>y){
+        for(int i=0;i<26;i++){
+            if(x[i]!=y[i])return false;
+        }
+        return true;
+    }
+    vector<int> findAnagrams(string s, string p) {
+        vector<int>ans;
+        vector<int>x(26,0),y(26,0);
+        for(auto it:p)x[it-'a']++;
+        int start=0,j=0;
+        while(j<s.size()){
+            y[s[j]-'a']++;
+            if(j-start+1==p.size()){
+                if(checkAna(x,y))ans.push_back(start);
+            }
+            if(j-start+1<p.size())j++;
+            else{
+                y[s[start]-'a']--;
+                start++;
+                j++;
+            }
+        }
+          return ans;
+    }
+};
