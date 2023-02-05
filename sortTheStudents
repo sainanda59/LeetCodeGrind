@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<vector<int>> sortTheStudents(vector<vector<int>>& score, int k) {
+        vector<int>kth;
+        unordered_map<int,int>ump;
+        for(int i=0;i<score.size();i++){
+          ump[score[i][k]]=i;
+          kth.push_back(score[i][k]);
+        }
+        sort(kth.begin(),kth.end(),greater<>());
+        vector<vector<int>>ans;
+        for(auto it:kth){
+        ans.push_back(score[ump[it]]);
+        }
+        return ans;
+    }
+};
