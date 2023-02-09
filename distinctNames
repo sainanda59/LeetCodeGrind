@@ -1,0 +1,25 @@
+class Solution {
+public:
+    long long distinctNames(vector<string>& ideas) {
+        vector<unordered_set<string>>v(26);
+        for(auto it:ideas){
+            v[it[0]-'a'].insert(it.substr(1));
+        }
+        long long int count=0;
+        for(int i=0;i<26;i++){
+            for(int j=i+1;j<26;j++){
+            long long int a=0,b=0;
+            for(auto it:v[i]){
+                if(v[j].find(it)==v[j].end())a++;
+            }
+            for(auto it:v[j]){
+                if(v[i].find(it)==v[i].end())b++;
+            }
+            count+=2*a*b;
+            }
+        }
+        
+        return count;
+
+    }
+};
