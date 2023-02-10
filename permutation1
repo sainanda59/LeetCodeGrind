@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void permute(vector<int>& nums, int i, int n, vector<int>perm, vector<vector<int>>&ans){
+        cout<<1<<endl;
+        if(i>=n){
+        ans.push_back(perm);
+        return;
+        }
+        for(int x=0;x<=perm.size();x++){
+            perm.insert(perm.begin()+x,nums[i]);
+            cout<<perm[x];
+            permute(nums,i+1,n,perm,ans);
+            perm.erase(perm.begin()+x);
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>>ans;
+        vector<int>perm;
+        permute(nums,0,nums.size(),perm,ans);
+        return ans;
+    }
+};
