@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int isPalindrome(string s, int i, int j){
+        while(i>=0 && j<s.size() && s[i]==s[j]){
+            i--,j++;
+        }
+        return ((j-1)-(i+1));
+    }
+    string longestPalindrome(string s) {
+        int start=0,len=0;
+        for(int i=0;i<s.size();i++){
+        int x = max(isPalindrome(s,i-1,i+1),isPalindrome(s,i,i+1));
+        if(x>len){
+            start=i-x/2;
+            len=x;
+        }
+        }
+        return s.substr(start,len+1);
+    }
+};
