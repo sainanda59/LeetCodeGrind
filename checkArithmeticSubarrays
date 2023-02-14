@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool check(vector<int>& nums,int l, int r){
+        vector<int>temp;
+        for(int i=l;i<=r;i++)temp.push_back(nums[i]);
+        sort(temp.begin(),temp.end());
+        int diff=temp[1]-temp[0];
+        for(int i=2;i<temp.size();i++){
+        if(temp[i]-temp[i-1]!=diff)return false;
+        }
+        return true;
+    }
+    vector<bool> checkArithmeticSubarrays(vector<int>& nums, vector<int>& l, vector<int>& r) {
+        vector<bool>ans(l.size(),false);
+        for(int i=0;i<l.size();i++){
+        ans[i]=check(nums,l[i],r[i]);
+        }
+        return ans;
+    }
+};
