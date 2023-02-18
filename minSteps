@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int minSteps(string s, string t) {
+        unordered_map<char,int>ump;
+        for(auto it:t)ump[it]++;
+        for(auto it:s)ump[it]--;
+        int ans=0;
+        for(auto [a,b]:ump){
+            if(b<0)ans+=abs(b);
+        }
+        return ans;
+    }
+};
