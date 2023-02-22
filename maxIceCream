@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxIceCream(vector<int>& costs, int coins) {
+     map<int,int>mp;
+     for(auto it:costs){
+         mp[it]++;
+     }
+     int ans=0;
+     for(auto [a,b]:mp){
+         if(a>coins)break;
+         int x = min(coins/a,b);
+         ans+=x;
+         coins-=x*a;
+     }   
+     return ans;
+    }
+};
