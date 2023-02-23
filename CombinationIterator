@@ -1,0 +1,34 @@
+class CombinationIterator {
+private:
+void comb(string s, int size, int n, int i, string o, vector<string>&ans){
+    if(i>=size){
+        if(o.size()==n)ans.push_back(o);
+        return;
+    }
+    comb(s,size,n,i+1,o+s[i],ans);
+    comb(s,size,n,i+1,o,ans);
+    return;
+}
+vector<string>combinations(string characters, int combinationLength){
+    vector<string>ans;
+    comb(characters,characters.size(),combinationLength,0,"",ans);
+    return ans;
+}
+public:
+    vector<string>combi;
+    int i;
+    CombinationIterator(string characters, int combinationLength) {
+        combi=combinations(characters, combinationLength);
+        i=0;
+    }
+    
+    string next() {
+        string o = combi[i];
+        i++;
+        return o;
+    }
+    
+    bool hasNext() {
+        return !(i>=combi.size());
+    }
+};
