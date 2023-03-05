@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maximumProduct(vector<int>& nums, int k) {
+        priority_queue<long long int,vector<long long int>,greater<long long int>>pq;
+        for(auto it:nums)pq.push(it);
+        while(1){
+            long long int x = pq.top();
+            pq.pop();
+            while(k && x<=pq.top())
+                x++,k--;
+            pq.push(x);
+            if(k==0)break;
+        }
+        long long int pro=1;
+        while(pq.size()){
+        pro= (pro*pq.top())%(1000000007);
+        pq.pop();
+        }
+        return pro;
+    }
+};
